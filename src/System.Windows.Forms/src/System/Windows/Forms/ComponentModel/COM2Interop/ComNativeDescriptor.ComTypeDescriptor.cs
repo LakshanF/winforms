@@ -36,6 +36,8 @@ internal partial class ComNativeDescriptor
         [RequiresUnreferencedCode(AttributesRequiresUnreferencedCodeMessage)]
         TypeConverter ICustomTypeDescriptor.GetConverter() => GetIComponentConverter();
 
+        TypeConverter? ICustomTypeDescriptor.GetConverterSafe() => null;
+
         [RequiresUnreferencedCode(EventDescriptorRequiresUnreferencedCodeMessage)]
         EventDescriptor? ICustomTypeDescriptor.GetDefaultEvent() => null;
 

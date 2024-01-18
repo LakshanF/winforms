@@ -2487,6 +2487,8 @@ public abstract unsafe partial class AxHost : Control, ISupportInitialize, ICust
         return null;
     }
 
+    TypeConverter? ICustomTypeDescriptor.GetConverterSafe() => null;
+
     [EditorBrowsable(EditorBrowsableState.Advanced)]
     [RequiresUnreferencedCode(TrimmingConstants.EventDescriptorRequiresUnreferencedCodeMessage)]
     EventDescriptor? ICustomTypeDescriptor.GetDefaultEvent()

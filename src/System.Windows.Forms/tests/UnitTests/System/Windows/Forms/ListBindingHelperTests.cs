@@ -807,6 +807,8 @@ public class ListBindingHelperTests
             throw new NotImplementedException();
         }
 
+        TypeConverter? ICustomTypeDescriptor.GetConverterSafe() => null;
+
         public override object[] GetCustomAttributes(bool inherit)
         {
             throw new NotImplementedException();

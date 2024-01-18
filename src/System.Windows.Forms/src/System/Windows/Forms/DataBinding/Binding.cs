@@ -716,7 +716,7 @@ public partial class Binding
             }
 
             // Second try: use the TypeConverter
-            TypeConverter typeConverter = TypeDescriptor.GetConverter(value is not null ? value.GetType() : typeof(object));
+            TypeConverter typeConverter = TypeDescriptor.GetConverterSafe(value is not null ? value.GetType() : typeof(object));
             if (typeConverter is not null && typeConverter.CanConvertTo(type))
             {
                 return typeConverter.ConvertTo(value, type);
@@ -790,7 +790,7 @@ public partial class Binding
             }
 
             // second try: use type converter for the desiredType
-            TypeConverter typeConverter = TypeDescriptor.GetConverter(value is not null ? value.GetType() : typeof(object));
+            TypeConverter typeConverter = TypeDescriptor.GetConverterSafe(value is not null ? value.GetType() : typeof(object));
             if (typeConverter is not null && typeConverter.CanConvertTo(type))
             {
                 return typeConverter.ConvertTo(value, type);

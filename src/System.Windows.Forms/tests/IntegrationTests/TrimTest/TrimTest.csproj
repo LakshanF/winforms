@@ -2,24 +2,19 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <Nullable>enable</Nullable>
-    <OutputType>WinExe</OutputType>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <!-- These are needed to suppress the localization step picked up from Arcade targets -->
-    <EnableXlfLocalization>false</EnableXlfLocalization>
-    <UpdateXlfOnBuild>false</UpdateXlfOnBuild>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <TrimmerSingleWarn>false</TrimmerSingleWarn>
+    <PublishTrimmed>true</PublishTrimmed>
+    <_ExtraTrimmerArgs>--link-attributes attr.xml</_ExtraTrimmerArgs>
   </PropertyGroup>
 
-  <!-- These normally come from $(UseWindowsForms) when $(ImplicitUsings) is enabled -->
-  <ItemGroup>
-    <Using Include="System.Drawing" />
-    <Using Include="System.Windows.Forms" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\System.Drawing.Common\src\System.Drawing.Common.csproj" />
-    <ProjectReference Include="..\..\..\src\System.Windows.Forms.csproj" />
-  </ItemGroup>
+  <!--Hack to prevent wpf not being brought in -->
+  <!--target for Trimming-->
+  <Target Name="RemoveWPFReference" AfterTargets="_ComputeAssembliesToPostprocessOnPublish">
+    <ItemGroup>
+      <ResolvedFileToPublish Remove="@(ResolvedFileToPublish)" Condition="'%(FileName)' == 'PresentationFramework'" />
+    </ItemGroup>
+  </Target>
 
 </Project>

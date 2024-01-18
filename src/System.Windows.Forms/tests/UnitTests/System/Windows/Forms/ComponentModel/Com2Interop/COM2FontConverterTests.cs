@@ -119,6 +119,8 @@ public unsafe class COM2FontConverterTests
 
             public TypeConverter? GetConverter() => throw new NotImplementedException();
 
+            TypeConverter? ICustomTypeDescriptor.GetConverterSafe() => null;
+
             public EventDescriptor? GetDefaultEvent() => throw new NotImplementedException();
 
             public PropertyDescriptor? GetDefaultProperty() => throw new NotImplementedException();

@@ -1251,6 +1251,8 @@ internal class DataGridViewColumnCollectionDialog : Form
 
         TypeConverter ICustomTypeDescriptor.GetConverter() => TypeDescriptor.GetConverter(DataGridViewColumn);
 
+        TypeConverter? ICustomTypeDescriptor.GetConverterSafe() => null;
+
         EventDescriptor? ICustomTypeDescriptor.GetDefaultEvent() => TypeDescriptor.GetDefaultEvent(DataGridViewColumn);
 
         PropertyDescriptor? ICustomTypeDescriptor.GetDefaultProperty() => TypeDescriptor.GetDefaultProperty(DataGridViewColumn);

@@ -1254,6 +1254,8 @@ public partial class CollectionEditor
             /// </summary>
             TypeConverter? ICustomTypeDescriptor.GetConverter() => null;
 
+            TypeConverter? ICustomTypeDescriptor.GetConverterSafe() => null;
+
             /// <summary>
             ///  Retrieves the default event.
             /// </summary>

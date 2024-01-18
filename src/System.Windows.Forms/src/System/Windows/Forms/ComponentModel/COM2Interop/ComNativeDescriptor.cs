@@ -93,7 +93,7 @@ internal sealed unsafe partial class ComNativeDescriptor : TypeDescriptionProvid
         return typeInfoName.AsSpan().TrimStart('_').ToString();
     }
 
-    internal static TypeConverter GetIComponentConverter() => TypeDescriptor.GetConverter(typeof(IComponent));
+    internal static TypeConverter GetIComponentConverter() => TypeDescriptor.GetConverterSafe(typeof(IComponent));
 
     internal static object? GetEditor(object component, Type baseEditorType)
         => TypeDescriptor.GetEditor(component.GetType(), baseEditorType);
@@ -335,7 +335,7 @@ internal sealed unsafe partial class ComNativeDescriptor : TypeDescriptionProvid
         if (propertyValue is not null && !Convert.IsDBNull(propertyValue))
         {
             Type type = propertyValue.GetType();
-            TypeConverter subConverter = TypeDescriptor.GetConverter(type);
+            TypeConverter subConverter = TypeDescriptor.GetConverterSafe(type);
             if (subConverter is not null && subConverter.GetType() != typeof(TypeConverter))
             {
                 currentConverter = subConverter;

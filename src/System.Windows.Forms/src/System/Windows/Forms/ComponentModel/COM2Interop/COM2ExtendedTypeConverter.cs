@@ -21,7 +21,7 @@ internal class Com2ExtendedTypeConverter : TypeConverter
 
     public Com2ExtendedTypeConverter([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type baseType)
     {
-        _innerConverter = TypeDescriptor.GetConverter(baseType);
+        _innerConverter = TypeDescriptor.GetConverterSafe(baseType);
     }
 
     public TypeConverter? InnerConverter => _innerConverter;
